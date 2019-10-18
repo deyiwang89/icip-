@@ -1,3 +1,4 @@
+
 - 主要内容源自[教程：WRF 3.9.1.1 在Ubuntu16.04 LTS 下的安装包括Chem kpp](http://bbs.06climate.com/forum.php?mod=viewthread&tid=57144&highlight=UBUNTU%2BWRF), 并进行修改, 经测试, 所有命令均有效.
 - 本配置步骤涵盖WRF及无KPP的WRF-Chem编译, 不包括WPS及WRF-DA
 ##  WRFV3.9.1.1配置步骤
@@ -447,7 +448,338 @@ cd flex-2.5.37/
 make
 make install
 ```
+
+卸载flex-2.5.37:
+```
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.37# make uninstall
+
+Making uninstall in lib
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/lib'
+make[1]: Nothing to be done for 'uninstall'.
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/lib'
+Making uninstall in .
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37'
+ ( cd '/usr/local/flex/bin' && rm -f flex )
+ ( cd '/usr/local/flex/share/doc/flex' && rm -f AUTHORS COPYING NEWS ONEWS README README.cvs TODO )
+ ( cd '/usr/local/flex/include' && rm -f FlexLexer.h )
+ ( cd '/usr/local/flex/lib' && rm -f libfl.a libfl_pic.a )
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37'
+Making uninstall in doc
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/doc'
+ ( cd '/usr/local/flex/share/doc/flex' && rm -f flex.pdf )
+ rm -f '/usr/local/flex/share/doc/flex/flex.dvi'
+ rm -rf '/usr/local/flex/share/doc/flex/flex.html'
+ install-info --info-dir='/usr/local/flex/share/info' --remove '/usr/local/flex/share/info/flex.info'
+ cd '/usr/local/flex/share/info' && rm -f flex.info flex.info-[0-9] flex.info-[0-9][0-9] flex.i[0-9] flex.i[0-9][0-9]
+ ( cd '/usr/local/flex/share/man/man1' && rm -f flex.1 )
+ rm -f '/usr/local/flex/share/doc/flex/flex.pdf'
+ rm -f '/usr/local/flex/share/doc/flex/flex.ps'
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/doc'
+Making uninstall in examples
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/examples'
+Making uninstall in manual
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/examples/manual'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/examples/manual'
+Making uninstall in fastwc
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/examples/fastwc'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/examples/fastwc'
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/examples'
+make[2]: Nothing to be done for 'uninstall-am'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/examples'
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/examples'
+Making uninstall in po
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/po'
+catalogs='ca.gmo da.gmo de.gmo es.gmo fi.gmo fr.gmo ga.gmo ko.gmo nl.gmo pl.gmo pt_BR.gmo ro.gmo ru.gmo sv.gmo tr.gmo vi.gmo zh_CN.gmo'; \
+for cat in $catalogs; do \
+  cat=`basename $cat`; \
+  lang=`echo $cat | sed -e 's/\.gmo$//'`; \
+  for lc in LC_MESSAGES ; do \
+    rm -f /usr/local/flex/share/locale/$lang/$lc/flex.mo; \
+  done; \
+done
+if test "flex" = "gettext-tools"; then \
+  for file in Makefile.in.in remove-potcdate.sin quot.sed boldquot.sed en@quot.header en@boldquot.header insert-header.sin Rules-quot   Makevars.template; do \
+    rm -f /usr/local/flex/share/gettext/po/$file; \
+  done; \
+else \
+  : ; \
+fi
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/po'
+Making uninstall in tools
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/tools'
+make[1]: Nothing to be done for 'uninstall'.
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/tools'
+Making uninstall in tests
+make[1]: Entering directory '/usr/local/flex/flex-2.5.37/tests'
+Making uninstall in test-concatenated-options
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-concatenated-options'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-concatenated-options'
+Making uninstall in test-c++-yywrap
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-c++-yywrap'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-c++-yywrap'
+Making uninstall in test-extended
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-extended'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-extended'
+Making uninstall in test-ccl
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-ccl'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-ccl'
+Making uninstall in test-quotes
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-quotes'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-quotes'
+Making uninstall in test-rescan-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-rescan-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-rescan-r'
+Making uninstall in test-rescan-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-rescan-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-rescan-nr'
+Making uninstall in test-basic-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-basic-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-basic-nr'
+Making uninstall in test-basic-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-basic-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-basic-r'
+Making uninstall in test-bison-yylloc
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-bison-yylloc'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-bison-yylloc'
+Making uninstall in test-bison-yylval
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-bison-yylval'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-bison-yylval'
+Making uninstall in test-bison-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-bison-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-bison-nr'
+Making uninstall in test-multiple-scanners-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-multiple-scanners-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-multiple-scanners-nr'
+Making uninstall in test-multiple-scanners-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-multiple-scanners-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-multiple-scanners-r'
+Making uninstall in test-header-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-header-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-header-nr'
+Making uninstall in test-header-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-header-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-header-r'
+Making uninstall in test-reject
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-reject'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-reject'
+Making uninstall in test-c++-multiple-scanners
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-c++-multiple-scanners'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-c++-multiple-scanners'
+Making uninstall in test-c++-basic
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-c++-basic'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-c++-basic'
+Making uninstall in test-posixly-correct
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-posixly-correct'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-posixly-correct'
+Making uninstall in test-posix
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-posix'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-posix'
+Making uninstall in test-mem-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-mem-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-mem-r'
+Making uninstall in test-mem-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-mem-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-mem-nr'
+Making uninstall in test-debug-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-debug-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-debug-nr'
+Making uninstall in test-debug-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-debug-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-debug-r'
+Making uninstall in test-lineno-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-lineno-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-lineno-r'
+Making uninstall in test-lineno-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-lineno-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-lineno-nr'
+Making uninstall in test-linedir-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-linedir-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-linedir-r'
+Making uninstall in test-array-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-array-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-array-nr'
+Making uninstall in test-array-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-array-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-array-r'
+Making uninstall in test-c-cpp-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-c-cpp-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-c-cpp-nr'
+Making uninstall in test-c-cpp-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-c-cpp-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-c-cpp-r'
+Making uninstall in test-include-by-buffer
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-buffer'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-buffer'
+Making uninstall in test-include-by-push
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-push'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-push'
+Making uninstall in test-include-by-reentrant
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-reentrant'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-include-by-reentrant'
+Making uninstall in test-prefix-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-prefix-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-prefix-nr'
+Making uninstall in test-prefix-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-prefix-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-prefix-r'
+Making uninstall in test-pthread
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-pthread'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-pthread'
+Making uninstall in test-string-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-string-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-string-nr'
+Making uninstall in test-string-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-string-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-string-r'
+Making uninstall in test-yyextra
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-yyextra'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-yyextra'
+Making uninstall in test-alloc-extra
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-alloc-extra'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-alloc-extra'
+Making uninstall in test-noansi-nr
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-noansi-nr'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-noansi-nr'
+Making uninstall in test-noansi-r
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-noansi-r'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-noansi-r'
+Making uninstall in test-top
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-top'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-top'
+Making uninstall in test-table-opts
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests/test-table-opts'
+make[2]: Nothing to be done for 'uninstall'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests/test-table-opts'
+make[2]: Entering directory '/usr/local/flex/flex-2.5.37/tests'
+make[2]: Nothing to be done for 'uninstall-am'.
+make[2]: Leaving directory '/usr/local/flex/flex-2.5.37/tests'
+make[1]: Leaving directory '/usr/local/flex/flex-2.5.37/tests'
+```
+
+
+- 安装flex-2.5.3
+```
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.37# mv /usr/local/flex   /usr/local/flex_2.5.37
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.37# mkdir /usr/local/flex
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.37# cd /home/icip1004/下载
+root@icip1004-All-Series:/home/icip1004/下载# mv flex.tar.gz  /usr/local/flex
+root@icip1004-All-Series:/home/icip1004/下载# cd /usr/local/flex
+
+root@icip1004-All-Series:/usr/local/flex# tar -xzf flex.tar.gz 
+
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.3# ./configure --prefix=/usr/local/flex
+creating cache ./config.cache
+checking whether ln -s works... yes
+checking for bison... /usr/local/yacc/yacc -d
+checking for gcc... gcc
+checking whether we are using GNU C... yes
+checking whether gcc accepts -g... yes
+checking for ranlib... ranlib
+checking for a BSD compatible install... /usr/bin/install -c
+checking whether make sets $MAKE... yes
+checking for working const... yes
+checking how to run the C preprocessor... gcc -E
+checking whether cross-compiling... no
+checking for ANSI C header files... yes
+checking for size_t... yes
+checking for ANSI C header files... (cached) yes
+checking for string.h... yes
+checking for malloc.h... yes
+checking for sys/types.h... yes
+updating cache ./config.cache
+creating ./config.status
+creating Makefile
+creating config.h
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.3# make
+cp ./initscan.c scan.c
+touch .bootstrap
+gcc -c -I. -I. -g -O ccl.c
+gcc -c -I. -I. -g -O dfa.c
+gcc -c -I. -I. -g -O ecs.c
+gcc -c -I. -I. -g -O gen.c
+gcc -c -I. -I. -g -O main.c
+gcc -c -I. -I. -g -O misc.c
+gcc -c -I. -I. -g -O nfa.c
+/usr/local/yacc/yacc -d -d ./parse.y
+gcc -c -I. -I. -g -O parse.c
+gcc -c -I. -I. -g -O scan.c
+gcc -c -I. -I. -g -O skel.c
+gcc -c -I. -I. -g -O sym.c
+gcc -c -I. -I. -g -O tblcmp.c
+gcc -c -I. -I. -g -O yylex.c
+gcc -c -I. -I. -g -O libmain.c
+gcc -c -I. -I. -g -O libyywrap.c
+ar cru libfl.a libmain.o libyywrap.o
+ar: `u' 修饰符被忽略，因为 `D' 为默认（参见 `U'）
+ranlib libfl.a
+gcc -g -O -o flex  ccl.o dfa.o ecs.o gen.o main.o misc.o nfa.o parse.o scan.o skel.o sym.o tblcmp.o yylex.o  libfl.a 
+root@icip1004-All-Series:/usr/local/flex/flex-2.5.3# make install
+/bin/sh ./mkinstalldirs \
+  /usr/local/flex/bin /usr/local/flex/lib /usr/local/flex/include /usr/local/flex/man/man1
+mkdir /usr/local/flex/bin
+mkdir /usr/local/flex/lib
+mkdir /usr/local/flex/include
+mkdir /usr/local/flex/man
+mkdir /usr/local/flex/man/man1
+rm -f /usr/local/flex/man/man1/flexdoc.1
+/usr/bin/install -c -m 644 ./flex.1 /usr/local/flex/man/man1/flex.1
+/usr/bin/install -c flex /usr/local/flex/bin/flex
+cd /usr/local/flex/bin && ln -s flex flex++
+/usr/bin/install -c -m 644 libfl.a /usr/local/flex/lib/libfl.a
+cd /usr/local/flex/lib && ranlib libfl.a
+/usr/bin/install -c -m 644 ./FlexLexer.h /usr/local/flex/include/FlexLexer.h
+```
+
+
 检验 flex 和 yacc的安装:
+**之前KPP安装不成功的原因是flex版本的问题, 更换为2.5.3就正常了**
 ```
 root@icip1004-All-Series:~# which flex
 /usr/local/flex/bin/flex
@@ -480,43 +812,72 @@ cd /home/icip1004/model/WRFV3
 ./configure 
 ./compile em_real >&checkwrf.log
 ```
-得到返回:
+~~得到返回~~:
 ```
 *** buffer overflow detected ***: /home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp terminated
-======= Backtrace: =========
-/lib/x86_64-linux-gnu/libc.so.6(+0x777e5)[0x7fd4332907e5]
-/lib/x86_64-linux-gnu/libc.so.6(__fortify_fail+0x5c)[0x7fd43333156c]
-/lib/x86_64-linux-gnu/libc.so.6(+0x116570)[0x7fd43332f570]
-/lib/x86_64-linux-gnu/libc.so.6(+0x1158c2)[0x7fd43332e8c2]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x404660]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x401502]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x40237e]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x4065b6]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x40836f]
-/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0)[0x7fd433239830]
-/home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp[0x401189]
-======= Memory map: ========
-00400000-00429000 r-xp 00000000 08:07 2228906                            /home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp
-00628000-00629000 r--p 00028000 08:07 2228906                            /home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp
-00629000-0062f000 rw-p 00029000 08:07 2228906                            /home/icip1004/model/WRFV3/chem/KPP/kpp/kpp-2.1/bin/kpp
-0062f000-006c9000 rw-p 00000000 00:00 0 
-009ce000-010d2000 rw-p 00000000 00:00 0                                  [heap]
-7fd433003000-7fd433019000 r-xp 00000000 08:07 1444365                    /lib/x86_64-linux-gnu/libgcc_s.so.1
-7fd433019000-7fd433218000 ---p 00016000 08:07 1444365                    /lib/x86_64-linux-gnu/libgcc_s.so.1
-7fd433218000-7fd433219000 rw-p 00015000 08:07 1444365                    /lib/x86_64-linux-gnu/libgcc_s.so.1
-7fd433219000-7fd4333d8000 r-xp 00000000 08:07 1444327                    /lib/x86_64-linux-gnu/libc-2.23.so
-7fd4333d8000-7fd4335d8000 ---p 001bf000 08:07 1444327                    /lib/x86_64-linux-gnu/libc-2.23.so
-7fd4335d8000-7fd4335dc000 r--p 001bf000 08:07 1444327                    /lib/x86_64-linux-gnu/libc-2.23.so
-7fd4335dc000-7fd4335de000 rw-p 001c3000 08:07 1444327                    /lib/x86_64-linux-gnu/libc-2.23.so
-7fd4335de000-7fd4335e2000 rw-p 00000000 00:00 0 
-7fd4335e2000-7fd433608000 r-xp 00000000 08:07 1444299                    /lib/x86_64-linux-gnu/ld-2.23.so
-7fd4337ec000-7fd4337ef000 rw-p 00000000 00:00 0 
-7fd433804000-7fd433807000 rw-p 00000000 00:00 0 
-7fd433807000-7fd433808000 r--p 00025000 08:07 1444299                    /lib/x86_64-linux-gnu/ld-2.23.so
-7fd433808000-7fd433809000 rw-p 00026000 08:07 1444299                    /lib/x86_64-linux-gnu/ld-2.23.so
-7fd433809000-7fd43380a000 rw-p 00000000 00:00 0 
-7fff6398a000-7fff639ab000 rw-p 00000000 00:00 0                          [stack]
-7fff639b1000-7fff639b3000 r--p 00000000 00:00 0                          [vvar]
-7fff639b3000-7fff639b5000 r-xp 00000000 00:00 0                          [vdso]
-ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 ```
+ls -ls main/*.exe
+查看 main 目录下若有` ndwon.exe \real.exe \wrf.exe \tc.exe`，编译成功
+若未编译成功，在 checkwrf.log 中查看是否有 error，修正 error 后，用`./clean -a `清除前次编译后，重新编译.
+
+### 安装WPS
+WRFV3 和WPS 必须在同一个父目录下:
+`tar -xzf WPSV3.9.1.1.TAR.gz -C /home/icip1004/model/`
+转移到`\WPS`目录内
+`cd /home/yourname/models/WPS`
+打开`\WPS`下的`\arch`文件夹，找到`configure.defaults`，打开，修改如下部分：
+```
+###################################################################
+#ARCH    Linux x86_64, gfortran   # serial serial_NO_GRIB2 dmpar dmpar_NO_GRIB2
+#
+COMPRESSION_LIBS   	= -L /usr/local/JASPER/lib -ljasper -lpng -lpng16 -lz
+COMPRESSION_INC 	= -I /usr/local/JASPER/include
+FDEFS               = CONFIGURE_FDEFS
+SFC                 = gfortran
+SCC                 = gcc
+DM_FC               = mpif90 -f90=gfortran
+DM_CC               = mpicc -cc=gcc 
+FC                  = CONFIGURE_FC 
+CC                  = CONFIGURE_CC
+LD                  = $(FC)
+FFLAGS              = -ffree-form -cpp -O -fconvert=big-endian -frecord-marker=4
+F77FLAGS            = -ffixed-form -cpp -O -fconvert=big-endian -frecord-marker=4
+FCSUFFIX            = 
+FNGFLAGS            = $(FFLAGS)
+LDFLAGS             =
+CFLAGS              =
+CPP                 = /usr/bin/cpp -P -traditional
+CPPFLAGS            = -D_UNDERSCORE -DBYTESWAP -DLINUX -DIO_NETCDF -DBIT32 -DNO_SIGNAL CONFIGURE_MPI
+RANLIB              = ranlib 
+```
+
+在这部分里面做如下修改：
+```
+COMPRESSION_LIBS   = -L/usr/local/JASPER/lib -ljasper -lpng -lpng16 -lz
+COMPRESSION_INC = -I/usr/local/JASPER/include
+FFLAGS      =-ffree-form -cpp -O-fconvert=big-endian-frecord-marker=4
+F77FLAGS    =-ffixed-form -cpp -O -fconvert=big-endian-frecord-marker=4
+```
+保存后退出。
+找到`preamble`文件，打开做如下修改：
+`WRF_DIR = /home/yourname/model/WRFV3`
+编辑环境信息
+`gedit ~/.bashrc`
+```
+# for WPS
+export JASPERLIB=/usr/local/JASPER/lib
+export JASPERINC=/usr/local/JASPER/include
+export LD_LIBRARY_PATH=/usr/local/jasper/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/libpng/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/zlib/lib:$LD_LIBRARY_PATH
+```
+使配置生效:
+`source ~/.bashrc`
+`./configure`
+`./compile > checkwps.log`
+`ls -ls *.exe`
+检查当前目录中`(/home/models/WPS)`是否有名为`geogrid.exe \ungrib.exe \metgrid.exe`的链接文件，若有，编译成功。
+`ls -ls util/*.exe`
+检查当前目录中是否有如下exe，编译成功：
+`avg_tsfc.exe g1print.exeheight_ukmo.exe mod_levs.exe
+calc_ecmwf_p.exeg2print.exe int2nc.exe rd_intermediate.exe`若未编译成功，在`checkwps.log` 中查看是否有error，修正error 后，用`./clean-a`清除前次编译后，重新编译。

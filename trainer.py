@@ -15,29 +15,31 @@ running_loss_cell = 0
 
 
 
-
-bce_loss = nn.BCEWithLogitsLoss(size_average=True)
 ssim_loss = pytorch_ssim.SSIM(window_size=11,size_average=True)
 iou_loss = pytorch_iou.IOU(size_average=True)
 
 def cross_entropy2d(input, target, weight=None, size_average=True):
-    n, c, h, w = input.size()
     
+    n, c, h, w = input.size()
+    input_2 = input
+    input = input.transpose(1,2).transpose(2,3).contiguous()
+    input = input[target.view(n, h, w, 1).repeat(1, 1, 1, c) >= 0]
+    input = input.view(-1, c)
+
     mask = target >= 0
     target = target[mask]
-    target = target.view(h,w)
-    target = target.float()
-    target = torch.unsqueeze(target,0)
-    target = torch.unsqueeze(target,0)
-    target = torch.cat([target,target],0)
-    input = input.transpose(0,1).contiguous()
 
-    bce_out = bce_loss(input,target)
-    ssim_out = 1 - ssim_loss(input,target)
-    iou_out = iou_loss(input,target)
+    bce_out = F.cross_entropy(input, target, weight=weight, size_average=False)
+    target = target.view(1, -1, h, w)
+    target = torch.cat([target,target],1).float()
+
+    ssim_out = 1 - ssim_loss(input_2,target)
+    iou_out = iou_loss(input_2,target)
 
     loss = bce_out + ssim_out + iou_out
 
+    if size_average:
+        loss /= mask.data.sum()
     return loss
 
 
